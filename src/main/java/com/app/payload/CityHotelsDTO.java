@@ -1,4 +1,4 @@
-package com.app.dto;
+package com.app.payload;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
-import com.app.entities.HotelList;
+import com.app.entities.Hotel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -32,5 +32,5 @@ public class CityHotelsDTO {
 	private String cityState;
 	@NotBlank
 	private String cityCountry;
-	List<HotelList> hotel = new ArrayList<HotelList>();
+	List<Hotel> hotel = new ArrayList<Hotel>();
 }

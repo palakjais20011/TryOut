@@ -51,7 +51,7 @@ public class User
 	joinColumns = @JoinColumn(name="user_id"),
 	inverseJoinColumns = @JoinColumn(name="hotel_id")
 	)
-	private Set<HotelList> hotels =new HashSet<>();
+	private Set<Hotel> hotels =new HashSet<>();
 	
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")

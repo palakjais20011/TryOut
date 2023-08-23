@@ -27,7 +27,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class HotelList 
+public class Hotel 
 {
 
 	@Id

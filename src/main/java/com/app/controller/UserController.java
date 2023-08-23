@@ -8,14 +8,20 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,14 +34,16 @@ import com.app.dto.LoginRequest;
 import com.app.dto.MessageResponse;
 import com.app.dto.SignupRequest;
 import com.app.service.UserDetailsImpl;
+import com.app.service.UserServiceImpl;
 import com.app.entities.User;
 import com.app.entities.Role;
 import com.app.entities.ERole;
+import com.app.payload.MyApiResponse;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
-public class AuthController {
+@RequestMapping("/user")
+public class UserController {
   @Autowired
   AuthenticationManager authenticationManager;
 
@@ -50,6 +58,9 @@ public class AuthController {
 
   @Autowired
   JwtUtils jwtUtils;
+  
+  @Autowired
+  UserServiceImpl service;
 
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -137,5 +148,22 @@ public class AuthController {
     userRepository.save(user);
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+  }
+  
+  @GetMapping
+  public List<SignupRequest> listAllUsers()
+  {
+  return service.getAllUsers();
+  }
+
+  @DeleteMapping("/{uId}")
+  public MyApiResponse deleteUser(@PathVariable Long uId)
+  {
+  return service.deleteUser(uId);
+  }
+  
+  @PutMapping("/{id}")
+  public MyApiResponse updateUserr(@PathVariable Long id,@RequestBody SignupRequest user){
+  	return service.updateUser(id, user);
   }
 }

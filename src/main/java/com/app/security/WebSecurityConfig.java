@@ -61,7 +61,7 @@ public class WebSecurityConfig
         .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(auth -> 
-          auth.antMatchers("/api/auth/**").permitAll()
+          auth.antMatchers("/user/**").permitAll()
               .antMatchers("/swagger*/**", 
 						"/v*/api-docs/**").permitAll()
               .antMatchers("/api/test/mod").hasAuthority("ADMIN")

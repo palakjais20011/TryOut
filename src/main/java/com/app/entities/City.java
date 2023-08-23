@@ -40,15 +40,15 @@ public class City {
 		private String cityCountry;
 
 		@OneToMany(mappedBy = "city",cascade = CascadeType.ALL,orphanRemoval = true)
-		List<HotelList> hotel = new ArrayList<HotelList>();
+		List<Hotel> hotel = new ArrayList<Hotel>();
 		
-		public void addHotel(HotelList c)
+		public void addHotel(Hotel c)
 		{
 			hotel.add(c);
 			c.setCity(this);
 		}
 		
-		public void removeHotel(HotelList c)
+		public void removeHotel(Hotel c)
 		{
 			hotel.remove(c);
 			c.setCity(null);

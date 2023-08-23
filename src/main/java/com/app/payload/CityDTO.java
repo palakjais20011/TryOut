@@ -1,4 +1,4 @@
-package com.app.dto;
+package com.app.payload;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

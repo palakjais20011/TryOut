@@ -1,4 +1,4 @@
-package com.app.dto;
+package com.app.payload;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonProperty;

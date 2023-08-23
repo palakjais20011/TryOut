@@ -1,8 +1,4 @@
-package com.app.dto;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
+package com.app.payload;
 
 import lombok.Getter;
 import lombok.Setter;
